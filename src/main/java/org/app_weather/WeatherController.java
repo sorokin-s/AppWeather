@@ -3,12 +3,9 @@ package org.app_weather;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
-import org.w3c.dom.events.MouseEvent;
 
 import static javafx.application.Platform.exit;
-
+import static org.app_weather.WeatherForm.stageMain;
 public class WeatherController extends Weather  {
     @FXML
     public TextField textField;
@@ -45,6 +42,7 @@ public class WeatherController extends Weather  {
     @FXML
     protected void allTextClear(){
         if(!textArea.getText().isEmpty())textArea.clear();
+        strWeather="";
         setProgress(0);
         strError="";
         lblWeather.setText("");
@@ -52,18 +50,24 @@ public class WeatherController extends Weather  {
 
     @FXML
     protected void updateTextArea()
-    {
-        parserWeather();
+    {   parserWeather();
         if (jsonObject != null) {
+
             Platform.runLater(() -> lblWeather.setText(strWeather));
             jsonObject.toMap().forEach((k, v) -> textArea.appendText(k + ": " + v + "\n"));
             jsonObject.clear();
             setJsonData("");
         }
+        if(strWeather.isEmpty()){
+            Platform.runLater(() -> lblWeather.setText("Для данного города погода не найдена"));
+        }
 
 
     }
-     @FXML
-    void updateProgressBar(){Platform.runLater(()->progressBar.setProgress((double)getProgress()));}
+    @FXML
+   protected void updateProgressBar(){Platform.runLater(()->progressBar.setProgress((double)getProgress()));}
+    @FXML
+   protected void showAbout() throws Exception
+    {stageMain.setScene(new WeatherForm.SceneBuilder().getScene("about"));}
 
 }

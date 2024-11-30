@@ -1,16 +1,10 @@
 package org.app_weather;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Control;
+
 import okhttp3.*;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-
-
-import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
+
 
 
 
@@ -97,8 +91,6 @@ public class Weather {
     int humidity, visibility;
     String description;
 
-
-
     void parserWeather()
     {
            try
@@ -114,18 +106,13 @@ public class Weather {
                 humidity = main.getInt("humidity");
                 pressure = main.getDouble("pressure");
                 description = weather.getString("description");
-
-                }
-
                 strWeather = "Температура: "+temp+"\nВлажность: "
-                    + humidity + "\nДавление: "+pressure+"\nСкорость ветра: "+speedWind
-                        +"\nВидимость: "+ visibility +"\nОписание: "+description
-                       + (strError!=null? "\nОшибок: "+strError:"");
-
-
+                            + humidity + "\nДавление: "+pressure+"\nСкорость ветра: "+speedWind
+                            +"\nВидимость: "+ visibility +"\nОписание: "+description
+                            + (strError!=null? "\nОшибок: "+strError:"");
+                }
             }
             catch (Exception e){strError+=" \nparserWeather() "+e.getMessage()+" ";}
-
 
     }
 
