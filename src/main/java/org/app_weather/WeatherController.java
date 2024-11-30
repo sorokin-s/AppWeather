@@ -3,12 +3,9 @@ package org.app_weather;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
-import org.w3c.dom.events.MouseEvent;
 
 import static javafx.application.Platform.exit;
-
+import static org.app_weather.WeatherForm.stageMain;
 public class WeatherController extends Weather  {
     @FXML
     public TextField textField;
@@ -63,7 +60,10 @@ public class WeatherController extends Weather  {
 
 
     }
-     @FXML
-    void updateProgressBar(){Platform.runLater(()->progressBar.setProgress((double)getProgress()));}
+    @FXML
+   protected void updateProgressBar(){Platform.runLater(()->progressBar.setProgress((double)getProgress()));}
+    @FXML
+   protected void showAbout() throws Exception
+    {stageMain.setScene(new WeatherForm.SceneBuilder().getScene("about"));}
 
 }

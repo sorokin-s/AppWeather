@@ -26,9 +26,9 @@
            <MenuItem mnemonicParsing="false" onAction="#onExitButtonClick" text="Exit" />
          </items>
        </Menu>
-       <Menu mnemonicParsing="false" text="Help">
+       <Menu mnemonicParsing="false" text="About">
          <items>
-           <MenuItem mnemonicParsing="false" text="About" />
+           <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#showAbout" text="About" />
          </items>
        </Menu>
      </menus>

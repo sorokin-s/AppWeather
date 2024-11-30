@@ -1,6 +1,5 @@
 package org.app_weather;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import static org.app_weather.WeatherForm.stageMain;
