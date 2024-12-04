@@ -16,6 +16,7 @@ module org.example.appweather {
     requires org.json;
     requires annotations;
     requires java.desktop;
+    requires jdk.management.jfr;
 
     opens org.app_weather to javafx.fxml;
     exports org.app_weather;

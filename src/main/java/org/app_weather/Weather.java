@@ -1,11 +1,11 @@
 package org.app_weather;
 
 import okhttp3.*;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-
-
+import java.io.IOException;
 
 
 public class Weather {
@@ -79,8 +79,13 @@ public class Weather {
 //
 //              @Override
 //              public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                  if(response.isSuccessful()&&response.body()!=null){ setJsonData(response.body().string()); objJsonData =(response.body());}
+//                  if(response.isSuccessful()&&response.body()!=null){
+//                      setJsonData(response.body().string());
+//                      objJsonData =(response.body());
+//
+//                  }
 //                  else setJsonData("Error "+response.code()+" "+ response.message());
+//
 //              }
 //
 //          });

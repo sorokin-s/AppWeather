@@ -3,10 +3,14 @@ package org.app_weather;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 import static javafx.application.Platform.exit;
-import static org.app_weather.WeatherForm.stageMain;
+
 public class WeatherController extends Weather  {
+
     @FXML
     public TextField textField;
     @FXML
@@ -15,14 +19,15 @@ public class WeatherController extends Weather  {
     public Button btnRefresh;
     @FXML
     public ProgressBar progressBar;
-
     @FXML
     public TextArea textArea;
-    String value;
+    Stage stage = new Stage();
     public WeatherController()            // конструктор
     {
         addListener(evt ->{if(evt.getPropertyName().equals("jasonData"))updateTextArea();} ); // подписываемся на изменение
         addListener(evt->{if(evt.getPropertyName().equals("progress"))updateProgressBar();});
+
+        try{stage.setScene(new SceneBuilder().getScene("about"));} catch (IOException _) { }
     }
     @FXML
     protected void onExitButtonClick() {
@@ -36,7 +41,6 @@ public class WeatherController extends Weather  {
         setNameCity(textField.getText()); // присваиваем значение переменной название города
         lblCity.setText("Погода для города: "+textField.getText());
         getStrWeather();       // метод получения данных
-
 
     }
     @FXML
@@ -62,12 +66,13 @@ public class WeatherController extends Weather  {
             Platform.runLater(() -> lblWeather.setText("Для данного города погода не найдена"));
         }
 
-
     }
     @FXML
    protected void updateProgressBar(){Platform.runLater(()->progressBar.setProgress((double)getProgress()));}
     @FXML
-   protected void showAbout() throws Exception
-    {stageMain.setScene(new WeatherForm.SceneBuilder().getScene("about"));}
+   protected void showAbout()
+    {
+        stage.show();
+    }
 
 }

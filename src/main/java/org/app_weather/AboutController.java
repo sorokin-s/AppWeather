@@ -2,6 +2,8 @@ package org.app_weather;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
 import static org.app_weather.WeatherForm.stageMain;
 public class AboutController  {
     public AboutController(){}
@@ -10,8 +12,9 @@ public class AboutController  {
     protected Button btnClose;
 
     @FXML
-    protected void btnClose_Clicked() throws Exception
-    {stageMain.setScene(new WeatherForm.SceneBuilder().getScene("weather"));}
+    protected void btnClose_Clicked() throws Exception {
+        btnClose.getScene().getWindow().hide();
+    }
 
 
 }
