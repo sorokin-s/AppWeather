@@ -12,6 +12,7 @@ public class AboutForm extends Application{
 //        FXMLLoader fxmlLoader = new FXMLLoader(AboutForm.class.getResource("about-view.fxml"));
 //        Scene scene = new Scene(fxmlLoader.load());
 //        stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
         stage.setResizable(false);
 
     }
