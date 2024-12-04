@@ -26,8 +26,8 @@ public class WeatherController extends Weather  {
     {
         addListener(evt ->{if(evt.getPropertyName().equals("jasonData"))updateTextArea();} ); // подписываемся на изменение
         addListener(evt->{if(evt.getPropertyName().equals("progress"))updateProgressBar();});
-
         try{stage.setScene(new SceneBuilder().getScene("about"));} catch (IOException _) { }
+        stage.setAlwaysOnTop(true);
     }
     @FXML
     protected void onExitButtonClick() {
@@ -72,7 +72,7 @@ public class WeatherController extends Weather  {
     @FXML
    protected void showAbout()
     {
-        stage.show();
+        stage.showAndWait();
     }
 
 }
