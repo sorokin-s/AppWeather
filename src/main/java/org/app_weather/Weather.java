@@ -1,14 +1,15 @@
 package org.app_weather;
 
+import javafx.concurrent.Task;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
+import org.junit.jupiter.api.Test;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
 
-
-public class Weather {
+public class Weather  {
     private double progress=0;// переменная для progressBar from Controller
     Thread thread;  // отдельный поток для "асинхронного запроса"
     final String  API_KEY ="945aeac3143791440eea96eb52cfbbea";
@@ -26,13 +27,15 @@ public class Weather {
     public void setNameCity(String newCity) {
         this.nameCity = newCity;
     }
-    public Weather(){}
+     public Weather(){}
+
+
 
     private String nameCity;
     private String jsonData;
     public String strWeather, strError;
     Object objJsonData;
-    public void setJsonData(String newJsonData) {
+     public void setJsonData(String newJsonData) {
         String oldJasonData = this.jsonData;
         this.jsonData = newJsonData;
         psc.firePropertyChange("jasonData",oldJasonData,newJsonData);
@@ -42,9 +45,9 @@ public class Weather {
         return jsonData;
     }
     OkHttpClient okHttpClient = new OkHttpClient();
-    public JSONObject jsonObject,main,weather,wind;
-    Request request;
-    public double getProgress() {
+     public JSONObject jsonObject,main,weather,wind;
+     Request request;
+      public double getProgress() {
         return progress;
     }
 
@@ -53,6 +56,7 @@ public class Weather {
         this.progress = newValue;
         psc.firePropertyChange("progress",oldValue,newValue);
     }
+
     public void getWeather() throws Exception
     {
         String url = BASE_URL + "?q=" + getNameCity() + "&appid="+API_KEY+ "&units=metric&lang=ru-RU";
@@ -111,10 +115,13 @@ public class Weather {
                 humidity = main.getInt("humidity");
                 pressure = main.getDouble("pressure");
                 description = weather.getString("description");
-                strWeather = "Температура: "+temp+"\nВлажность: "
-                            + humidity + "\nДавление: "+pressure+"\nСкорость ветра: "+speedWind
-                            +"\nВидимость: "+ visibility +"\nОписание: "+description
-                            + (strError!=null? "\nОшибок: "+strError:"");
+                strWeather = "Температура: "+temp
+                        +"\nВлажность: "+ humidity
+                        + "\nДавление: "+pressure
+                        +"\nСкорость ветра: "+speedWind
+                        +"\nВидимость: "+ visibility
+                        +"\nОписание: "+description
+                        + (strError!=null? "\nОшибок: "+strError:"");
                 }
             }
             catch (Exception e){strError+=" \nparserWeather() "+e.getMessage()+" ";}
