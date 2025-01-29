@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -36,7 +38,7 @@
          <Glow />
       </effect>
    </MenuBar>
-   <Pane prefHeight="442.0" prefWidth="410.0">
+   <Pane fx:id="panel" prefHeight="442.0" prefWidth="410.0">
 
           <Button fx:id="btnRefresh" layoutX="327.0" layoutY="14.0" onAction="#getWeatherForNameCity" prefHeight="17.0" prefWidth="69.0" text="Refresh" />
       <TextField fx:id="textField" layoutX="14.0" layoutY="14.0" onAction="#getWeatherForNameCity" prefHeight="25.0" prefWidth="201.0" promptText="Moscow" />
@@ -44,6 +46,12 @@
       <TextArea fx:id="textArea" editable="false" layoutX="1.0" layoutY="232.0" prefHeight="208.0" prefWidth="410.0" promptText="dataObject" />
       <Label fx:id="lblWeather" layoutX="14.0" layoutY="79.0" text="..." />
       <ProgressBar fx:id="progressBar" layoutX="15.0" layoutY="67.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="4.0" minWidth="-Infinity" prefHeight="11.0" prefWidth="200.0" progress="0.0" />
+      <ImageView fx:id="imageView" fitHeight="136.0" fitWidth="184.0" layoutX="221.0" layoutY="90.0" pickOnBounds="true"
+                 smooth="false">
+         <image>
+            <Image url="@image1.jpg" />
+         </image>
+      </ImageView>
    </Pane>
 
 
