@@ -64,9 +64,9 @@ public class WeatherController   {
 
     @FXML
     protected  void getWeatherForNameCity() throws Exception
-    {  var image = imageView.getImage().getUrl();
-        if(image.equals(String.valueOf((getClass().getResource("weather.jpg")))))
-            imageView.setImage(new Image(String.valueOf((getClass().getResource("image1.jpg")))));
+    {  var image = imageView.getImage().getUrl();// получаем адрес установленной картинки
+        if(image.equals(String.valueOf((getClass().getResource("weather.jpg")))))// если такой то .....
+            imageView.setImage(new Image(String.valueOf((getClass().getResource("image1.jpg")))));// устанавливаем другую картинку
 
         allTextClear(); // очищаем предыдущие значения текстовых полей
         weather.setNameCity(textField.getText()); // присваиваем значение переменной название города
